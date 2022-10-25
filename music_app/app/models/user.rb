@@ -42,11 +42,10 @@ class User < ApplicationRecord
         self.session_token
     end
 
-    
+
     private
 
     def self.generate_unique_session_token
-
         loop do
             session_token = SecureRandom::urlsafe_base64(16)  #16 characters, which is also the default
             if !User.exists?(session_token: session_token)
